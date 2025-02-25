@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="shortcut icon" href="Images/Pi-symbol.svg.png" type="image/x-icon"/>
+</head>
+<body>
+  <!-- nav bar -->
+  <nav class="navbar">
+    <div class="container">
+      <h2>Performance Analysis</h2>
+    </div>
+    <div class="main-menu">
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="firststeps.html">First steps</a>
+        </li>
+        <li>
+          <a href="sqlanalysis.html">SQL Analysis</a>
+        </li>
+        <li>
+          <a href="conclusion.html">Conclusion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- analysis -->
+  <div class="body-bar">
+    <h2>Analysing Performance by Gender</h2>
+    <p>We start off our analysis by creating 2 new tables, using the code below,
+       from our original table, so that we can seperate the scores of men and women.
+      <div class="sql-box">
+        create table men_all_scores select * from all_scores where gender = 1;
+        create table women_all_scores select * from all_scores where gender = 0;
+      </div>
+      Next, using basic aggregate functions we can obtain some metrics.
+      <table>
+        <tr>
+            <th rowspan="2">Genders</th>
+            <th colspan="4">Maximum</th>
+            <th colspan="4">Minimum</th>
+            <th colspan="4">Average</th>
+        </tr>
+
+        <tr>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+        </tr>
+
+        <tr>
+            <td>Male</td>
+            <td>100</td><td>100</td><td>100</td><td>300</td>
+            <td>27</td><td>23</td><td>15</td><td>69</td>
+            <td>68.7</td><td>65.5</td><td>63.3</td><td>197.5</td>
+        </tr>
+
+        <tr>
+            <td>Female</td>
+            <td>100</td><td>100</td><td>100</td><td>300</td>
+            <td>0</td><td>17</td><td>10</td><td>27</td>
+            <td>63.6</td><td>72.6</td><td>72.5</td><td>208.7</td>
+        </tr>
+    </table> 
+    The minimum section of this table stands out because we see a large difference between the men and women, 
+    namely the minimum maths and combined scores. However, this difference seems to be balanced out when looking 
+    at the averages; in fact females have a higher combined average score than males. Furthermore, we can also 
+    average the combined averages across the 3 subjects for both males and females, to obtain an average score of 65.8
+    for a typical male in any of the 3 subjects and the analgous score for females is 69.6.
+    </p>
+  </div>
+
+  <div class="body-bar">
+    <h2>Socio-economical influences</h2>
+
+    <p>
+      This dataset contains information regarding the educational background of the student's family, 
+      whether students receive a free or reduced lunch and whether students completed a test prep course.
+      
+      <h3>Parental education level</h3>
+      Using the <code class="language-sql">GROUP BY</code> statement, we can firstly analyse the average scores based on
+      the educational background of the student's family. N.B. the scores in the tables below are all <b>average</b> scores
+      and the combined average score is averaged across the 3 subjects as well.
+      <table>
+        <tr>
+            <th rowspan="2">Genders</th>
+            <th colspan="4">Some high school</th>
+            <th colspan="4">High school</th>
+            <th colspan="4">Some college</th>
+        </tr>
+
+        <tr>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+        </tr>
+
+        <tr>
+            <td>Male</td>
+            <td>67.8</td><td>64.7</td><td>61.4</td><td>64.6</td>
+            <td>64.7</td><td>61.5</td><td>58.6</td><td>61.6</td>
+            <td>69.0</td><td>65.0</td><td>63.1</td><td>65.7</td>
+        </tr>
+
+        <tr>
+            <td>Female</td>
+            <td>59.3</td><td>69.1</td><td>68.3</td><td>65.6</td>
+            <td>59.4</td><td>68.2</td><td>66.7</td><td>64.7</td>
+            <td>65.4</td><td>73.6</td><td>74.0</td><td>71.0</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+            <th rowspan="2">Genders</th>
+            <th colspan="4">Associate's degree</th>
+            <th colspan="4">Bachelor's degree</th>
+            <th colspan="4">Master's degree</th>
+        </tr>
+
+        <tr>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+        </tr>
+
+        <tr>
+            <td>Male</td>
+            <td>70.8</td><td>67.4</td><td>65.4</td><td>67.9</td>
+            <td>70.6</td><td>68.1</td><td>67.7</td><td>68.8</td>
+            <td>74.8</td><td>73.1</td><td>72.6</td><td>73.5</td>
+
+        </tr>
+
+        <tr>
+            <td>Female</td>
+            <td>65.3</td><td>74.1</td><td>74.0</td><td>71.1</td>
+            <td>68.3</td><td>77.3</td><td>78.4</td><td>74.7</td>
+            <td>66.5</td><td>76.8</td><td>77.6</td><td>73.6</td>
+        </tr>
+      </table>
+      From these tables we can see that as the education level of a student's parents increases, we can expect their average
+      scores to also increase.
+      
+      <h3>Free or reduced lunch</h3>
+      We now take a similar approach to the next socio-economic influence - whether students receive a free or reduced lunch.
+      <table>
+        <tr>
+            <th rowspan="2">Genders</th>
+            <th colspan="4">Recieved free/reduced lunch</th>
+            <th colspan="4">No free/reduced lunch</th>
+        </tr>
+
+        <tr>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+        </tr>
+
+        <tr>
+            <td>Male</td>
+            <td>62.5</td><td>61.5</td><td>59.1</td><td>61.0</td>
+            <td>72.0</td><td>67.5</td><td>65.5</td><td>68.4</td>
+        </tr>
+
+        <tr>
+            <td>Female</td>
+            <td>55.8</td><td>67.4</td><td>66.4</td><td>63.2</td>
+            <td>68.1</td><td>75.6</td><td>75.9</td><td>73.2</td>
+        </tr>
+      </table>
+      Using these tables, we can see that students have receive free or reduced lunches score lower than those who do not.
+
+      <h3>Test prep course</h3>
+      Finally, we take the same approach to the final social-economic influence - whether students completed a test prep 
+      course.
+
+      <table>
+        <tr>
+            <th rowspan="2">Genders</th>
+            <th colspan="4">Recieved test prep</th>
+            <th colspan="4">No test prep</th>
+        </tr>
+
+        <tr>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+            <th>Maths Score</th>
+            <th>Reading Score</th>
+            <th>Writing Score</th>
+            <th>Combined Score</th>
+        </tr>
+
+        <tr>
+            <td>Male</td>
+            <td>72.3</td><td>70.2</td><td>69.8</td><td>70.8</td>
+            <td>66.7</td><td>62.8</td><td>59.6</td><td>63.0</td>
+        </tr>
+
+        <tr>
+            <td>Female</td>
+            <td>67.2</td><td>77.4</td><td>78.8</td><td>74.5</td>
+            <td>61.7</td><td>70.0</td><td>69.0</td><td>66.9</td>
+        </tr>
+      </table>
+      We can see that students who had the extra preparation typically had higher average scores, as we would expect.
+
+      Now that we have completed our analysis, we can conclude: <a href="conclusion.html">Conclusion</a>.
+    </p>
+  </div>
+</body>
+</html>

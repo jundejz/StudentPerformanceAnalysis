@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="shortcut icon" href="Images/Pi-symbol.svg.png" type="image/x-icon"/>
+</head>
+<body>
+  <!-- nav bar -->
+  <nav class="navbar">
+    <div class="container">
+      <h2>Performance Analysis</h2>
+    </div>
+    <div class="main-menu">
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="firststeps.html">First steps</a>
+        </li>
+        <li>
+          <a href="sqlanalysis.html">SQL Analysis</a>
+        </li>
+        <li>
+          <a href="conclusion.html">Conclusion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- hero -->
+  <div class="body-bar">
+    <h1>Welcome to my analysis of student performance!</h1>
+
+    <div class="slideshow-container">
+
+      <!-- Full-width images with number and caption text -->
+      <div class="slide fade">
+        <img src="Images/upload.jpg">
+        <div class="text">
+          <h3>First steps</h3>
+          <p>
+            In this section, I give a brief introduction to the project and explain how I upload and verify the data.
+          </p>
+          <p>
+            Link: <a href="firststeps.html">First Steps</a>
+          </p>
+        </div>
+      </div>
+    
+      <div class="slide fade">
+        <img src="Images/table.png">
+        <div class="text">
+          <h3>Analysis</h3>
+          <p>
+            In this section, I analyse the data using SQL.
+          </p>
+          <p>
+            Link: <a href="sqlanalysis.html">SQL Analysis</a>
+          </p>
+        </div>
+      </div>
+    
+      <div class="slide fade">
+        <img src="Images/conclusion.jpg">
+        <div class="text">
+          <h3>Conclusion</h3>
+          <p>
+            In this section, I give conclusion based on the analysis of my data and some suggestion for the next steps to take.
+          </p>
+          <p>
+            Link: <a href="conclusion.html">Conclusion</a>
+          </p>
+        </div>
+      </div>
+    
+      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+    <p class="spacer"></p>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.querySelectorAll(".slide");
+            
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+
+            slides.forEach(slide => slide.style.display = "none");
+            slides[slideIndex].style.display = "flex";
+        }
+  </script>
+</body>
+</html>

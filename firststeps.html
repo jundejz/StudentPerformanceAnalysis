@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="shortcut icon" href="Images/Pi-symbol.svg.png" type="image/x-icon"/>
+</head>
+<body>
+  <!-- nav bar -->
+  <nav class="navbar">
+    <div class="container">
+      <h2>Performance Analysis</h2>
+    </div>
+    <div class="main-menu">
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="firststeps.html">First steps</a>
+        </li>
+        <li>
+          <a href="sqlanalysis.html">SQL Analysis</a>
+        </li>
+        <li>
+          <a href="conclusion.html">Conclusion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- downloading and importing data -->
+  <div class="body-bar">
+    <h2>Downloading and importing the dataset</h2>
+    <p>First of all, I found and downloaded the dataset that I will be using on Kaggle. It can be found here: 
+      <a href="https://www.kaggle.com/datasets/muhammadroshaanriaz/students-performance-dataset-cleaned" target="_blank">
+        Student Performance Dataset
+      </a>. Then using the SQL queries below, I imported the dataset into a MySQL Workbench.
+      <div class="sql-box">
+        create database student_performance;
+        use student_performance;
+        rename table Cleaned_Students_Performance to all_scores;
+      </div>
+      It is always good practice to verify the data once you have imported it in. 
+      Therefore, I have done this using the query below.
+      <div class="sql-box">
+        select * from all_scores limit 10;
+      </div>
+      This selects the first 10 rows of the data and running this query returned the table below.
+      <figure>
+        <img src="Images/sample_10rows.png" style="width: 80%">
+        <figcaption>Figure 1: Sample of the dataset, namely the first 10 rows.</figcaption>
+      </figure>  
+      Now, that we have downloaded, imported and verified the data, we can begin our analysis! 
+      To see what I did follow this link: <a href="sqlanalysis.html">SQL Analysis</a>.
+    </p>
+  </div>
+</body>
+</html>
